@@ -215,3 +215,4 @@ __pycache__/
 .vscode/
 .idea/
 
+src/large_models_examples/large_models_examples/resources/models/FastSAM-x.pt
