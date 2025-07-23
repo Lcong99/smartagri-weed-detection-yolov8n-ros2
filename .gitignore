@@ -216,3 +216,4 @@ __pycache__/
 .idea/
 
 src/large_models_examples/large_models_examples/resources/models/FastSAM-x.pt
+.DS_Store
