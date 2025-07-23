@@ -1,0 +1,1187 @@
+.
+├── app
+│   ├── app
+│   │   ├── ar_app.py
+│   │   ├── common.py
+│   │   ├── hand_gesture.py
+│   │   ├── hand_trajectory_node.py
+│   │   ├── __init__.py
+│   │   ├── lidar_controller.py
+│   │   ├── line_following.py
+│   │   ├── model
+│   │   │   ├── hand_landmark.py
+│   │   │   ├── hand_landmark_sparse_Nx3x224x224.onnx
+│   │   │   ├── palm_detection_full_inf_post_192x192.onnx
+│   │   │   ├── palm_detection.py
+│   │   │   └── utils.py
+│   │   ├── object_tracking.py
+│   │   ├── obj_loader.py
+│   │   └── __pycache__
+│   │       ├── ar_app.cpython-310.pyc
+│   │       ├── common.cpython-310.pyc
+│   │       ├── hand_gesture.cpython-310.pyc
+│   │       ├── hand_trajectory_node.cpython-310.pyc
+│   │       ├── __init__.cpython-310.pyc
+│   │       ├── lidar_controller.cpython-310.pyc
+│   │       ├── line_following.cpython-310.pyc
+│   │       ├── object_tracking.cpython-310.pyc
+│   │       └── obj_loader.cpython-310.pyc
+│   ├── launch
+│   │   ├── ar_app_node.launch.py
+│   │   ├── hand_gesture_node.launch.py
+│   │   ├── lidar_node.launch.py
+│   │   ├── line_following_node.launch.py
+│   │   ├── object_tracking_node.launch.py
+│   │   ├── __pycache__
+│   │   │   ├── ar_app_node.launch.cpython-310.pyc
+│   │   │   ├── hand_gesture_node.launch.cpython-310.pyc
+│   │   │   ├── lidar_node.launch.cpython-310.pyc
+│   │   │   ├── line_following_node.launch.cpython-310.pyc
+│   │   │   ├── object_tracking_node.launch.cpython-310.pyc
+│   │   │   └── start_app.launch.cpython-310.pyc
+│   │   └── start_app.launch.py
+│   ├── models
+│   │   ├── bicycle.obj
+│   │   ├── chair.obj
+│   │   ├── cow.obj
+│   │   ├── fox.obj
+│   │   ├── model.jpg
+│   │   ├── pirate-ship-fat.obj
+│   │   ├── rat.obj
+│   │   └── wolf.obj
+│   ├── package.xml
+│   ├── resource
+│   │   └── app
+│   ├── setup.cfg
+│   ├── setup.py
+│   └── test
+│       ├── test_copyright.py
+│       ├── test_flake8.py
+│       └── test_pep257.py
+├── bringup
+│   ├── bringup
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-310.pyc
+│   │   │   └── startup_check.cpython-310.pyc
+│   │   └── startup_check.py
+│   ├── launch
+│   │   ├── bringup.launch.py
+│   │   └── msc
+│   │       └── 14568787b9f27199e9ec950aa0af565e
+│   │           └── cfg.ldata
+│   ├── package.xml
+│   ├── resource
+│   │   └── bringup
+│   ├── scripts
+│   │   ├── expand_rootfs.service
+│   │   ├── navigation.desktop
+│   │   ├── navigation.sh
+│   │   ├── slam.desktop
+│   │   ├── slam.sh
+│   │   └── start_app_node.service
+│   ├── setup.cfg
+│   ├── setup.py
+│   └── test
+│       ├── test_copyright.py
+│       ├── test_flake8.py
+│       └── test_pep257.py
+├── calibration
+│   ├── calibration
+│   │   ├── calibrate_angular.py
+│   │   ├── calibrate_linear.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── calibrate_angular.cpython-310.pyc
+│   │       └── __init__.cpython-310.pyc
+│   ├── config
+│   │   ├── bk.yaml
+│   │   └── imu_calib.yaml
+│   ├── launch
+│   │   ├── angular_calib.launch.py
+│   │   └── linear_calib.launch.py
+│   ├── package.xml
+│   ├── resource
+│   │   └── calibration
+│   ├── setup.cfg
+│   ├── setup.py
+│   └── test
+│       ├── test_copyright.py
+│       ├── test_flake8.py
+│       └── test_pep257.py
+├── driver
+│   ├── controller
+│   │   ├── config
+│   │   │   ├── calibrate_params.yaml
+│   │   │   ├── ekf.yaml
+│   │   │   └── init_pose.yaml
+│   │   ├── controller
+│   │   │   ├── ackermann.py
+│   │   │   ├── init_pose.py
+│   │   │   ├── __init__.py
+│   │   │   ├── mecanum.py
+│   │   │   ├── odom_publisher_node.py
+│   │   │   └── __pycache__
+│   │   │       ├── ackermann.cpython-310.pyc
+│   │   │       ├── __init__.cpython-310.pyc
+│   │   │       ├── init_pose.cpython-310.pyc
+│   │   │       ├── mecanum.cpython-310.pyc
+│   │   │       └── odom_publisher_node.cpython-310.pyc
+│   │   ├── launch
+│   │   │   ├── controller.launch.py
+│   │   │   ├── init_pose.launch.py
+│   │   │   ├── odom_publisher.launch.py
+│   │   │   ├── __pycache__
+│   │   │   │   ├── controller.launch.cpython-310.pyc
+│   │   │   │   ├── init_pose.launch.cpython-310.pyc
+│   │   │   │   └── odom_publisher.launch.cpython-310.pyc
+│   │   │   └── rf2o_laser_odometry.launch.py
+│   │   ├── package.xml
+│   │   ├── resource
+│   │   │   └── controller
+│   │   ├── setup.cfg
+│   │   ├── setup.py
+│   │   └── test
+│   │       ├── test_copyright.py
+│   │       ├── test_flake8.py
+│   │       └── test_pep257.py
+│   ├── kinematics
+│   │   ├── kinematics
+│   │   │   ├── forward_kinematics.so
+│   │   │   ├── __init__.py
+│   │   │   ├── inverse_kinematics.so
+│   │   │   ├── kinematics_control.py
+│   │   │   ├── kinematics_demo.py
+│   │   │   ├── __pycache__
+│   │   │   │   ├── __init__.cpython-310.pyc
+│   │   │   │   └── transform.cpython-310.pyc
+│   │   │   ├── search_kinematics_solutions_node.py
+│   │   │   └── transform.py
+│   │   ├── launch
+│   │   │   └── kinematics_node.launch.py
+│   │   ├── package.xml
+│   │   ├── resource
+│   │   │   └── kinematics
+│   │   ├── setup.cfg
+│   │   ├── setup.py
+│   │   └── test
+│   │       ├── test_copyright.py
+│   │       ├── test_flake8.py
+│   │       └── test_pep257.py
+│   ├── kinematics_msgs
+│   │   ├── CMakeLists.txt
+│   │   ├── msg
+│   │   │   ├── JointRange.msg
+│   │   │   ├── JointsRange.msg
+│   │   │   └── Link.msg
+│   │   ├── package.xml
+│   │   └── srv
+│   │       ├── GetJointRange.srv
+│   │       ├── GetLink.srv
+│   │       ├── GetRobotPose.srv
+│   │       ├── SetJointRange.srv
+│   │       ├── SetJointValue.srv
+│   │       ├── SetLink.srv
+│   │       └── SetRobotPose.srv
+│   ├── ros_robot_controller
+│   │   ├── launch
+│   │   │   ├── __pycache__
+│   │   │   │   └── ros_robot_controller.launch.cpython-310.pyc
+│   │   │   └── ros_robot_controller.launch.py
+│   │   ├── package.xml
+│   │   ├── resource
+│   │   │   └── ros_robot_controller
+│   │   ├── ros_robot_controller
+│   │   │   ├── __init__.py
+│   │   │   ├── __pycache__
+│   │   │   │   ├── __init__.cpython-310.pyc
+│   │   │   │   ├── ros_robot_controller_node.cpython-310.pyc
+│   │   │   │   └── ros_robot_controller_sdk.cpython-310.pyc
+│   │   │   ├── ros_robot_controller_node.py
+│   │   │   └── ros_robot_controller_sdk.py
+│   │   ├── scripts
+│   │   │   ├── 99-ttyACM0.rules
+│   │   │   └── create_udev_rules.sh
+│   │   ├── setup.cfg
+│   │   ├── setup.py
+│   │   └── test
+│   │       ├── test_copyright.py
+│   │       ├── test_flake8.py
+│   │       └── test_pep257.py
+│   ├── ros_robot_controller_msgs
+│   │   ├── CMakeLists.txt
+│   │   ├── msg
+│   │   │   ├── BusServoState.msg
+│   │   │   ├── ButtonState.msg
+│   │   │   ├── BuzzerState.msg
+│   │   │   ├── GetBusServoCmd.msg
+│   │   │   ├── GetPWMServoCmd.msg
+│   │   │   ├── LedState.msg
+│   │   │   ├── MotorsState.msg
+│   │   │   ├── MotorState.msg
+│   │   │   ├── OLEDState.msg
+│   │   │   ├── PWMServoState.msg
+│   │   │   ├── Sbus.msg
+│   │   │   ├── ServoPosition.msg
+│   │   │   ├── ServosPosition.msg
+│   │   │   ├── SetBusServoState.msg
+│   │   │   └── SetPWMServoState.msg
+│   │   ├── package.xml
+│   │   └── srv
+│   │       ├── GetBusServoState.srv
+│   │       └── GetPWMServoState.srv
+│   ├── sdk
+│   │   ├── package.xml
+│   │   ├── resource
+│   │   │   └── sdk
+│   │   ├── sdk
+│   │   │   ├── button.py
+│   │   │   ├── common.py
+│   │   │   ├── fps.py
+│   │   │   ├── __init__.py
+│   │   │   ├── led.py
+│   │   │   ├── pid.py
+│   │   │   └── __pycache__
+│   │   │       ├── common.cpython-310.pyc
+│   │   │       ├── fps.cpython-310.pyc
+│   │   │       ├── __init__.cpython-310.pyc
+│   │   │       └── pid.cpython-310.pyc
+│   │   ├── setup.cfg
+│   │   ├── setup.py
+│   │   └── test
+│   │       ├── test_copyright.py
+│   │       ├── test_flake8.py
+│   │       └── test_pep257.py
+│   ├── servo_controller
+│   │   ├── config
+│   │   │   └── servo_controller.yaml
+│   │   ├── launch
+│   │   │   ├── __pycache__
+│   │   │   │   └── servo_controller.launch.cpython-310.pyc
+│   │   │   └── servo_controller.launch.py
+│   │   ├── package.xml
+│   │   ├── resource
+│   │   │   └── servo_controller
+│   │   ├── servo_controller
+│   │   │   ├── action_group_controller.py
+│   │   │   ├── bus_servo_control.py
+│   │   │   ├── controller_manager.py
+│   │   │   ├── __init__.py
+│   │   │   ├── joint_position_controller.py
+│   │   │   ├── joint_trajectory_action_controller.py
+│   │   │   ├── __pycache__
+│   │   │   │   ├── action_group_controller.cpython-310.pyc
+│   │   │   │   ├── bus_servo_control.cpython-310.pyc
+│   │   │   │   ├── controller_manager.cpython-310.pyc
+│   │   │   │   ├── __init__.cpython-310.pyc
+│   │   │   │   ├── joint_position_controller.cpython-310.pyc
+│   │   │   │   ├── joint_trajectory_action_controller.cpython-310.pyc
+│   │   │   │   └── servo_controller.cpython-310.pyc
+│   │   │   └── servo_controller.py
+│   │   ├── setup.cfg
+│   │   ├── setup.py
+│   │   └── test
+│   │       ├── test_copyright.py
+│   │       ├── test_flake8.py
+│   │       └── test_pep257.py
+│   └── servo_controller_msgs
+│       ├── CMakeLists.txt
+│       ├── msg
+│       │   ├── ServoPosition.msg
+│       │   ├── ServosPosition.msg
+│       │   ├── ServoStateList.msg
+│       │   └── ServoState.msg
+│       └── package.xml
+├── example
+│   ├── config
+│   │   ├── automatic_pick_roi.yaml
+│   │   ├── bridge_plane_distance.yaml
+│   │   ├── color_sorting_roi.yaml
+│   │   ├── garbage_classification_roi.yaml
+│   │   ├── line_follow_clean_roi.yaml
+│   │   ├── object_classification_plane_distance.yaml
+│   │   ├── plane_distance.yaml
+│   │   └── roi.yaml
+│   ├── example
+│   │   ├── body_control
+│   │   │   ├── body_and_rgb_control.launch.py
+│   │   │   ├── body_control.launch.py
+│   │   │   ├── body_track.launch.py
+│   │   │   ├── fall_down_detect.launch.py
+│   │   │   └── include
+│   │   │       ├── body_and_rgb_control.py
+│   │   │       ├── body_control.py
+│   │   │       ├── body_track.py
+│   │   │       └── fall_down_detect.py
+│   │   ├── color_detect
+│   │   │   ├── color_detect_demo.py
+│   │   │   ├── color_detect_node.launch.py
+│   │   │   ├── color_detect_node.py
+│   │   │   └── msc
+│   │   │       └── 14568787b9f27199e9ec950aa0af565e
+│   │   │           ├── cfg.ldata
+│   │   │           └── kaitalk.dat
+│   │   ├── color_sorting
+│   │   │   ├── color_sorting_node.launch.py
+│   │   │   └── color_sorting_node.py
+│   │   ├── color_track
+│   │   │   ├── color_track_node.launch.py
+│   │   │   └── color_track_node.py
+│   │   ├── garbage_classification
+│   │   │   ├── garbage_classification.launch.py
+│   │   │   └── garbage_classification.py
+│   │   ├── hand_gesture_control
+│   │   │   ├── hand_gesture_control_node.launch.py
+│   │   │   └── hand_gesture_control_node.py
+│   │   ├── hand_track
+│   │   │   ├── hand_detect_node.py
+│   │   │   ├── hand_track_node.launch.py
+│   │   │   └── hand_track_node.py
+│   │   ├── hand_trajectory
+│   │   │   ├── finger_control.launch.py
+│   │   │   ├── finger_control.py
+│   │   │   ├── hand_trajectory_node.launch.py
+│   │   │   └── hand_trajectory_node.py
+│   │   ├── __init__.py
+│   │   ├── line_follow_clean
+│   │   │   ├── line_follow_clean_node.launch.py
+│   │   │   └── line_follow_clean_node.py
+│   │   ├── mediapipe_example
+│   │   │   ├── face_detect.py
+│   │   │   ├── face_mesh.py
+│   │   │   ├── fps.py
+│   │   │   ├── hand_gesture.py
+│   │   │   ├── hand.py
+│   │   │   ├── holistic.py
+│   │   │   ├── mediapipe_visual.py
+│   │   │   ├── model
+│   │   │   │   ├── classifier.tflite
+│   │   │   │   ├── deeplabv3.tflite
+│   │   │   │   ├── detector.tflite
+│   │   │   │   ├── face_landmarker_v2_with_blendshapes.task
+│   │   │   │   ├── face_stylizer.task
+│   │   │   │   ├── gesture_recognizer.task
+│   │   │   │   ├── hand_landmarker.task
+│   │   │   │   └── pose_landmarker.task
+│   │   │   ├── objectron.py
+│   │   │   ├── pose.py
+│   │   │   └── self_segmentation.py
+│   │   ├── navigation_transport
+│   │   │   ├── automatic_pick.launch.py
+│   │   │   ├── automatic_pick.py
+│   │   │   ├── msc
+│   │   │   │   └── 14568787b9f27199e9ec950aa0af565e
+│   │   │   │       ├── cfg.ldata
+│   │   │   │       └── kaitalk.dat
+│   │   │   ├── navigation_transport.launch.py
+│   │   │   └── navigation_transport.py
+│   │   ├── __pycache__
+│   │   │   └── __init__.cpython-310.pyc
+│   │   ├── qrcode
+│   │   │   ├── myQRcode.jpg
+│   │   │   ├── qrcode_creater.py
+│   │   │   └── qrcode_detecter.py
+│   │   ├── rgbd_function
+│   │   │   ├── cross_bridge.launch.py
+│   │   │   ├── cross_bridge_node.py
+│   │   │   ├── msc
+│   │   │   │   └── 14568787b9f27199e9ec950aa0af565e
+│   │   │   │       ├── cfg.ldata
+│   │   │   │       └── kaitalk.dat
+│   │   │   ├── object_classification.launch.py
+│   │   │   ├── object_classification.py
+│   │   │   ├── position_change_detect.py
+│   │   │   ├── prevent_falling.launch.py
+│   │   │   ├── prevent_falling_node.py
+│   │   │   ├── track_and_grab.launch.py
+│   │   │   ├── track_and_grab.py
+│   │   │   ├── track_object.launch.py
+│   │   │   ├── track_object_node.py
+│   │   │   ├── vc_object_classification.launch.py
+│   │   │   ├── vc_object_classification.py
+│   │   │   ├── vc_track_and_grab.launch.py
+│   │   │   └── vc_track_and_grab.py
+│   │   ├── self_driving
+│   │   │   ├── lane_detect.py
+│   │   │   ├── __pycache__
+│   │   │   │   ├── lane_detect.cpython-310.pyc
+│   │   │   │   └── self_driving.cpython-310.pyc
+│   │   │   ├── self_driving.launch.py
+│   │   │   └── self_driving.py
+│   │   └── yolov5_detect
+│   │       ├── garbage_classification_640s_7_0.engine
+│   │       ├── libmyplugins.so
+│   │       ├── __pycache__
+│   │       │   ├── yolov5_node.cpython-310.pyc
+│   │       │   └── yolov5_trt.cpython-310.pyc
+│   │       ├── reset.sh
+│   │       ├── traffic_signs_640s_7_0.engine
+│   │       ├── yolov5_node.py
+│   │       ├── yolov5s.engine
+│   │       └── yolov5_trt.py
+│   ├── package.xml
+│   ├── resource
+│   │   ├── example
+│   │   └── flag.dae
+│   ├── setup.cfg
+│   ├── setup.py
+│   └── test
+│       ├── test_copyright.py
+│       ├── test_flake8.py
+│       └── test_pep257.py
+├── interfaces
+│   ├── CMakeLists.txt
+│   ├── mapping_rules.yaml
+│   ├── msg
+│   │   ├── ColorDetect.msg
+│   │   ├── ColorInfo.msg
+│   │   ├── ColorsInfo.msg
+│   │   ├── LineROI.msg
+│   │   ├── ObjectInfo.msg
+│   │   ├── ObjectsInfo.msg
+│   │   ├── PixelPosition.msg
+│   │   ├── Point2D.msg
+│   │   ├── Points.msg
+│   │   ├── Pose2D.msg
+│   │   └── ROI.msg
+│   ├── package.xml
+│   └── srv
+│       ├── GetPose.srv
+│       ├── SetBox.srv
+│       ├── SetCircleROI.srv
+│       ├── SetColorDetectParam.srv
+│       ├── SetColorRGBA.srv
+│       ├── SetFloat64List.srv
+│       ├── SetFloat64.srv
+│       ├── SetInt64.srv
+│       ├── SetLineROI.srv
+│       ├── SetPoint.srv
+│       ├── SetPose2D.srv
+│       ├── SetPose.srv
+│       ├── SetStringList.srv
+│       └── SetString.srv
+├── large_models
+│   ├── large_models
+│   │   ├── large_models
+│   │   │   ├── agent_process.py
+│   │   │   ├── config.py
+│   │   │   ├── __init__.py
+│   │   │   ├── __pycache__
+│   │   │   │   ├── agent_process.cpython-310.pyc
+│   │   │   │   ├── config.cpython-310.pyc
+│   │   │   │   ├── __init__.cpython-310.pyc
+│   │   │   │   ├── tts_node.cpython-310.pyc
+│   │   │   │   └── vocal_detect.cpython-310.pyc
+│   │   │   ├── resources
+│   │   │   │   └── audio
+│   │   │   │       ├── dong.wav
+│   │   │   │       ├── en
+│   │   │   │       │   ├── dong.wav
+│   │   │   │       │   ├── error.wav
+│   │   │   │       │   ├── no_voice.wav
+│   │   │   │       │   ├── record_finish.wav
+│   │   │   │       │   ├── start_audio.wav
+│   │   │   │       │   ├── start_track.wav
+│   │   │   │       │   ├── track_fail.wav
+│   │   │   │       │   └── wakeup.wav
+│   │   │   │       ├── error.wav
+│   │   │   │       ├── no_voice.wav
+│   │   │   │       ├── record_finish.wav
+│   │   │   │       ├── start_audio.wav
+│   │   │   │       ├── start_track.wav
+│   │   │   │       ├── track_fail.wav
+│   │   │   │       ├── tts_audio.wav
+│   │   │   │       └── wakeup.wav
+│   │   │   ├── tts_node.py
+│   │   │   └── vocal_detect.py
+│   │   ├── launch
+│   │   │   ├── agent_process.launch.py
+│   │   │   ├── start.launch.py
+│   │   │   ├── tts_node.launch.py
+│   │   │   └── vocal_detect.launch.py
+│   │   ├── LICENSE
+│   │   ├── package.xml
+│   │   ├── resource
+│   │   │   └── large_models
+│   │   ├── setup.cfg
+│   │   ├── setup.py
+│   │   └── test
+│   │       ├── test_copyright.py
+│   │       ├── test_flake8.py
+│   │       └── test_pep257.py
+│   └── large_models_msgs
+│       ├── CMakeLists.txt
+│       ├── LICENSE
+│       ├── msg
+│       │   ├── AgentResult.msg
+│       │   └── Transport.msg
+│       ├── package.xml
+│       └── srv
+│           ├── SetBox.srv
+│           ├── SetContent.srv
+│           ├── SetInt32.srv
+│           ├── SetModel.srv
+│           ├── SetString.srv
+│           └── SetTransportObject.srv
+├── large_models_examples
+│   ├── config
+│   │   ├── automatic_pick_roi.yaml
+│   │   └── automatic_transport_roi.yaml
+│   ├── large_models_examples
+│   │   ├── __init__.py
+│   │   ├── llm_color_track.launch.py
+│   │   ├── llm_color_track.py
+│   │   ├── llm_control_move.launch.py
+│   │   ├── llm_control_move.py
+│   │   ├── llm_visual_patrol.launch.py
+│   │   ├── llm_visual_patrol.py
+│   │   ├── navigation_controller.py
+│   │   ├── navigation_transport
+│   │   │   ├── automatic_pick.launch.py
+│   │   │   ├── automatic_pick.py
+│   │   │   ├── navigation_transport.launch.py
+│   │   │   ├── __pycache__
+│   │   │   │   ├── automatic_pick.cpython-310.pyc
+│   │   │   │   └── vllm_navigation_transport.cpython-310.pyc
+│   │   │   ├── vllm_navigation_transport.launch.py
+│   │   │   └── vllm_navigation_transport.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-310.pyc
+│   │   │   ├── llm_color_track.cpython-310.pyc
+│   │   │   ├── llm_control_move.cpython-310.pyc
+│   │   │   ├── llm_visual_patrol.cpython-310.pyc
+│   │   │   ├── navigation_controller.cpython-310.pyc
+│   │   │   ├── track_anything.cpython-310.pyc
+│   │   │   ├── tracker.cpython-310.pyc
+│   │   │   ├── vllm_navigation.cpython-310.pyc
+│   │   │   ├── vllm_track.cpython-310.pyc
+│   │   │   └── vllm_with_camera.cpython-310.pyc
+│   │   ├── resources
+│   │   │   └── models
+│   │   │       ├── FastSAM-x.pt
+│   │   │       ├── nanotrack_backbone_exam.engine
+│   │   │       ├── nanotrack_backbone_temp.engine
+│   │   │       └── nanotrack_head.engine
+│   │   ├── track_anything.py
+│   │   ├── tracker.py
+│   │   ├── transport_dietitianl
+│   │   │   ├── automatic_transport.launch.py
+│   │   │   ├── automatic_transport.py
+│   │   │   ├── transport_dietitianl.launch.py
+│   │   │   ├── vllm_transport_dietitianl.launch.py
+│   │   │   └── vllm_transport_dietitianl.py
+│   │   ├── vllm_navigation.launch.py
+│   │   ├── vllm_navigation.py
+│   │   ├── vllm_track.launch.py
+│   │   ├── vllm_track.py
+│   │   ├── vllm_with_camera.launch.py
+│   │   └── vllm_with_camera.py
+│   ├── LICENSE
+│   ├── package.xml
+│   ├── resource
+│   │   └── large_models_examples
+│   ├── setup.cfg
+│   ├── setup.py
+│   └── test
+│       ├── test_copyright.py
+│       ├── test_flake8.py
+│       └── test_pep257.py
+├── navigation
+│   ├── config
+│   │   ├── nav2_controller_dwb.yaml
+│   │   ├── nav2_controller_teb.yaml
+│   │   └── nav2_params.yaml
+│   ├── launch
+│   │   ├── include
+│   │   │   ├── bringup.launch.py
+│   │   │   ├── localization.launch.py
+│   │   │   ├── navigation_base.launch.py
+│   │   │   ├── __pycache__
+│   │   │   │   ├── bringup.launch.cpython-310.pyc
+│   │   │   │   ├── localization.launch.cpython-310.pyc
+│   │   │   │   ├── navigation_base.launch.cpython-310.pyc
+│   │   │   │   └── rtabmap.launch.cpython-310.pyc
+│   │   │   └── rtabmap.launch.py
+│   │   ├── navigation.launch.py
+│   │   ├── rtabmap_navigation.launch.py
+│   │   ├── rtabmapviz.launch.py
+│   │   ├── rviz_navigation.launch.py
+│   │   └── rviz_rtabmap_navigation.launch.py
+│   ├── navigation
+│   │   └── __init__.py
+│   ├── package.xml
+│   ├── resource
+│   │   └── navigation
+│   ├── rviz
+│   │   ├── navigation_controller.rviz
+│   │   ├── navigation_desktop.rviz
+│   │   ├── navigation.rviz
+│   │   ├── navigation_transport.rviz
+│   │   ├── rtabmap.rviz
+│   │   └── transport_dietitianl.rviz
+│   ├── setup.cfg
+│   ├── setup.py
+│   └── test
+│       ├── test_copyright.py
+│       ├── test_flake8.py
+│       └── test_pep257.py
+├── peripherals
+│   ├── config
+│   │   ├── camera_info.yaml
+│   │   ├── lidar_filters_config_a1.yaml
+│   │   ├── lidar_filters_config_g4.yaml
+│   │   ├── lidar_filters_config_ld14p.yaml
+│   │   ├── lidar_filters_config_ld19.yaml
+│   │   └── usb_cam_param.yaml
+│   ├── launch
+│   │   ├── depth_camera.launch.py
+│   │   ├── imu_filter.launch.py
+│   │   ├── imu_view.launch.py
+│   │   ├── include
+│   │   │   ├── dabai_dcw.launch.py
+│   │   │   ├── ldlidar_LD19.launch.py
+│   │   │   ├── __pycache__
+│   │   │   │   ├── dabai_dcw.launch.cpython-310.pyc
+│   │   │   │   ├── sllidar_a1.launch.cpython-310.pyc
+│   │   │   │   └── ydlidar_g4.launch.cpython-310.pyc
+│   │   │   ├── sllidar_a1.launch.py
+│   │   │   └── ydlidar_g4.launch.py
+│   │   ├── joystick_control.launch.py
+│   │   ├── lidar.launch.py
+│   │   ├── lidar_view.launch.py
+│   │   ├── __pycache__
+│   │   │   ├── depth_camera.launch.cpython-310.pyc
+│   │   │   ├── imu_filter.launch.cpython-310.pyc
+│   │   │   ├── joystick_control.launch.cpython-310.pyc
+│   │   │   ├── lidar.launch.cpython-310.pyc
+│   │   │   └── usb_cam.launch.cpython-310.pyc
+│   │   ├── teleop_key_control.launch.py
+│   │   └── usb_cam.launch.py
+│   ├── package.xml
+│   ├── peripherals
+│   │   ├── __init__.py
+│   │   ├── joystick_control.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-310.pyc
+│   │   │   ├── joystick_control.cpython-310.pyc
+│   │   │   ├── teleop_key_control.cpython-310.pyc
+│   │   │   └── tf_broadcaster_imu.cpython-310.pyc
+│   │   ├── teleop_key_control.py
+│   │   └── tf_broadcaster_imu.py
+│   ├── resource
+│   │   └── peripherals
+│   ├── rviz
+│   │   ├── imu_view.rviz
+│   │   └── lidar_view.rviz
+│   ├── scripts
+│   │   ├── 99-obsensor-libusb.rules
+│   │   ├── 99-ttyACM0.rules
+│   │   ├── 99-usb-cam.rules
+│   │   ├── create_udev_rules.sh
+│   │   ├── lidar.rules
+│   │   └── xf_mic.rules
+│   ├── setup.cfg
+│   ├── setup.py
+│   └── test
+│       ├── test_copyright.py
+│       ├── test_flake8.py
+│       └── test_pep257.py
+├── simulations
+│   └── jetrover_description
+│       ├── jetrover_description
+│       │   └── __init__.py
+│       ├── launch
+│       │   ├── display.launch.py
+│       │   ├── msc
+│       │   │   └── 14568787b9f27199e9ec950aa0af565e
+│       │   │       └── cfg.ldata
+│       │   ├── __pycache__
+│       │   │   ├── robot_description.launch.cpython-310.pyc
+│       │   │   └── rviz.launch.cpython-310.pyc
+│       │   ├── robot_description.launch.py
+│       │   └── rviz.launch.py
+│       ├── meshes
+│       │   ├── acker
+│       │   │   ├── base_green_link.stl
+│       │   │   ├── base_link.stl
+│       │   │   ├── wheel_left_back_link.stl
+│       │   │   ├── wheel_left_front_link.stl
+│       │   │   ├── wheel_right_back_link.stl
+│       │   │   └── wheel_right_front_link.stl
+│       │   ├── arm
+│       │   │   ├── camera_connect_link.STL
+│       │   │   ├── depth_cam_link_collision.stl
+│       │   │   ├── depth_cam_link.STL
+│       │   │   ├── gripper_link_collision.stl
+│       │   │   ├── gripper_link.STL
+│       │   │   ├── link1.STL
+│       │   │   ├── link2_collision.stl
+│       │   │   ├── link2.STL
+│       │   │   ├── link3_collision.stl
+│       │   │   ├── link3.STL
+│       │   │   ├── link4_collision.stl
+│       │   │   ├── link4.STL
+│       │   │   ├── link5.STL
+│       │   │   ├── servo_link1_collision.stl
+│       │   │   ├── servo_link1.STL
+│       │   │   ├── servo_link2_collision.stl
+│       │   │   └── servo_link2.STL
+│       │   ├── common
+│       │   │   ├── back_shell_black_link_collision.stl
+│       │   │   ├── back_shell_black_link.stl
+│       │   │   ├── back_shell_green_link_collision.stl
+│       │   │   ├── back_shell_green_link.stl
+│       │   │   ├── imu_link.stl
+│       │   │   └── lidar_link.stl
+│       │   ├── gripper
+│       │   │   ├── l_in_link.STL
+│       │   │   ├── l_link.STL
+│       │   │   ├── l_out_link.STL
+│       │   │   ├── r_in_link.STL
+│       │   │   ├── r_link.STL
+│       │   │   └── r_out_link.STL
+│       │   ├── mecanum
+│       │   │   ├── base_link_collision.stl
+│       │   │   ├── base_link.stl
+│       │   │   ├── wheel_left_back_link_collision.stl
+│       │   │   ├── wheel_left_back_link.stl
+│       │   │   ├── wheel_left_front_link_collision.stl
+│       │   │   ├── wheel_left_front_link.stl
+│       │   │   ├── wheel_right_back_link_collision.stl
+│       │   │   ├── wheel_right_back_link.stl
+│       │   │   ├── wheel_right_front_link_collision.stl
+│       │   │   └── wheel_right_front_link.stl
+│       │   └── tank
+│       │       ├── base_link.stl
+│       │       └── wheel_link.stl
+│       ├── package.xml
+│       ├── resource
+│       │   └── jetrover_description
+│       ├── rviz
+│       │   └── view.rviz
+│       ├── setup.cfg
+│       ├── setup.py
+│       ├── test
+│       │   ├── test_copyright.py
+│       │   ├── test_flake8.py
+│       │   └── test_pep257.py
+│       └── urdf
+│           ├── arm.urdf.xacro
+│           ├── car_acker.urdf.xacro
+│           ├── car_mecanum.urdf.xacro
+│           ├── car_tank.urdf.xacro
+│           ├── common.urdf.xacro
+│           ├── connect.urdf.xacro
+│           ├── depth_camera.urdf.xacro
+│           ├── gripper.urdf.xacro
+│           ├── imu.urdf.xacro
+│           ├── inertial_matrix.xacro
+│           ├── jetrover.xacro
+│           ├── lidar_a1.urdf.xacro
+│           ├── lidar_g4.urdf.xacro
+│           ├── lidar.urdf.xacro
+│           └── materials.xacro
+├── slam
+│   ├── config
+│   │   └── slam.yaml
+│   ├── launch
+│   │   ├── include
+│   │   │   ├── __pycache__
+│   │   │   │   ├── robot.launch.cpython-310.pyc
+│   │   │   │   └── slam_base.launch.cpython-310.pyc
+│   │   │   ├── robot.launch.py
+│   │   │   ├── rtabmap.launch.py
+│   │   │   └── slam_base.launch.py
+│   │   ├── msc
+│   │   │   └── 14568787b9f27199e9ec950aa0af565e
+│   │   │       └── cfg.ldata
+│   │   ├── rtabmap_slam.launch.py
+│   │   ├── rviz_rtabmap.launch.py
+│   │   ├── rviz_slam.launch.py
+│   │   └── slam.launch.py
+│   ├── maps
+│   ├── package.xml
+│   ├── resource
+│   │   └── slam
+│   ├── rviz
+│   │   ├── rtabmap.rviz
+│   │   ├── slam_desktop.rviz
+│   │   └── slam.rviz
+│   ├── setup.cfg
+│   ├── setup.py
+│   ├── slam
+│   │   ├── __init__.py
+│   │   ├── map_save.py
+│   │   └── __pycache__
+│   │       ├── __init__.cpython-310.pyc
+│   │       └── map_save.cpython-310.pyc
+│   └── test
+│       ├── test_copyright.py
+│       ├── test_flake8.py
+│       └── test_pep257.py
+├── tree_ros2_ws_weed_4.txt
+├── xf_mic_asr_offline
+│   ├── audio
+│   │   └── vvui_deno.pcm
+│   ├── CMakeLists.txt
+│   ├── config
+│   │   ├── call.bnf
+│   │   └── msc
+│   │       └── res
+│   │           └── asr
+│   │               ├── common.jet
+│   │               └── GrmBuilld
+│   │                   ├── avufhxea.d
+│   │                   ├── azcfaaaa.d
+│   │                   ├── bgofdgea.d
+│   │                   ├── bpnwveba.d
+│   │                   ├── bzvskdaa.d
+│   │                   ├── call_16K
+│   │                   ├── call.g
+│   │                   ├── ckrpirfa.d
+│   │                   ├── cofeaaaa.d
+│   │                   ├── cpajlpfa.d
+│   │                   ├── cyqdtoba.d
+│   │                   ├── dcoqydga.d
+│   │                   ├── drusmmga.d
+│   │                   ├── dtfeaaaa.d
+│   │                   ├── eeqyjjba.d
+│   │                   ├── exxwavba.d
+│   │                   ├── eyfeaaaa.d
+│   │                   ├── eymubdfa.d
+│   │                   ├── feqptica.d
+│   │                   ├── gineyoca.d
+│   │                   ├── gjcokuaa.d
+│   │                   ├── gswciiaa.d
+│   │                   ├── guufoaaa.d
+│   │                   ├── gxorqzea.d
+│   │                   ├── hwvsdaaa.d
+│   │                   ├── iizywfea.d
+│   │                   ├── iotvyvaa.d
+│   │                   ├── itleaaaa.d
+│   │                   ├── jgbfalfa.d
+│   │                   ├── jpilrlba.d
+│   │                   ├── jqegctba.d
+│   │                   ├── knhyszea.d
+│   │                   ├── komrpdba.d
+│   │                   ├── krihtaaa.d
+│   │                   ├── lvzuqgca.d
+│   │                   ├── mfyugbaa.d
+│   │                   ├── mxrgqrea.d
+│   │                   ├── ndubimca.d
+│   │                   ├── nejzeoaa.d
+│   │                   ├── oaxiaqba.d
+│   │                   ├── oicueeaa.d
+│   │                   ├── okurwyca.d
+│   │                   ├── ozzulgga.d
+│   │                   ├── pucowmda.d
+│   │                   ├── pzonwlba.d
+│   │                   ├── qhjtnraa.d
+│   │                   ├── qjwjlwba.d
+│   │                   ├── qmgyeeca.d
+│   │                   ├── qtjnrvaa.d
+│   │                   ├── qugcsoaa.d
+│   │                   ├── qwxyxkaa.d
+│   │                   ├── raydrrba.d
+│   │                   ├── roikquaa.d
+│   │                   ├── rtewegfa.d
+│   │                   ├── skuzsqfa.d
+│   │                   ├── temp
+│   │                   │   ├── avufhxea.d
+│   │                   │   ├── azcfaaaa.d
+│   │                   │   ├── bgofdgea.d
+│   │                   │   ├── bpnwveba.d
+│   │                   │   ├── bzvskdaa.d
+│   │                   │   ├── call_16K
+│   │                   │   ├── call.g
+│   │                   │   ├── ckrpirfa.d
+│   │                   │   ├── cofeaaaa.d
+│   │                   │   ├── cpajlpfa.d
+│   │                   │   ├── cyqdtoba.d
+│   │                   │   ├── dcoqydga.d
+│   │                   │   ├── drusmmga.d
+│   │                   │   ├── dtfeaaaa.d
+│   │                   │   ├── eeqyjjba.d
+│   │                   │   ├── exxwavba.d
+│   │                   │   ├── eyfeaaaa.d
+│   │                   │   ├── eymubdfa.d
+│   │                   │   ├── feqptica.d
+│   │                   │   ├── gineyoca.d
+│   │                   │   ├── gjcokuaa.d
+│   │                   │   ├── gswciiaa.d
+│   │                   │   ├── guufoaaa.d
+│   │                   │   ├── gxorqzea.d
+│   │                   │   ├── hwvsdaaa.d
+│   │                   │   ├── iizywfea.d
+│   │                   │   ├── iotvyvaa.d
+│   │                   │   ├── itleaaaa.d
+│   │                   │   ├── jgbfalfa.d
+│   │                   │   ├── jpilrlba.d
+│   │                   │   ├── jqegctba.d
+│   │                   │   ├── knhyszea.d
+│   │                   │   ├── komrpdba.d
+│   │                   │   ├── krihtaaa.d
+│   │                   │   ├── lvzuqgca.d
+│   │                   │   ├── mfyugbaa.d
+│   │                   │   ├── mxrgqrea.d
+│   │                   │   ├── ndubimca.d
+│   │                   │   ├── nejzeoaa.d
+│   │                   │   ├── oaxiaqba.d
+│   │                   │   ├── oicueeaa.d
+│   │                   │   ├── okurwyca.d
+│   │                   │   ├── ozzulgga.d
+│   │                   │   ├── pucowmda.d
+│   │                   │   ├── pzonwlba.d
+│   │                   │   ├── qhjtnraa.d
+│   │                   │   ├── qjwjlwba.d
+│   │                   │   ├── qmgyeeca.d
+│   │                   │   ├── qtjnrvaa.d
+│   │                   │   ├── qugcsoaa.d
+│   │                   │   ├── qwxyxkaa.d
+│   │                   │   ├── raydrrba.d
+│   │                   │   ├── roikquaa.d
+│   │                   │   ├── rtewegfa.d
+│   │                   │   ├── skuzsqfa.d
+│   │                   │   ├── tiihbdea.d
+│   │                   │   ├── totdqpda.d
+│   │                   │   ├── ubdwauga.d
+│   │                   │   ├── uhojdwba.d
+│   │                   │   ├── uikawbda.d
+│   │                   │   ├── uqfkpqea.d
+│   │                   │   ├── uryscuba.d
+│   │                   │   ├── vazwmtaa.d
+│   │                   │   ├── vdmitdba.d
+│   │                   │   ├── venlmxaa.d
+│   │                   │   ├── vhywnzda.d
+│   │                   │   ├── wpwskyca.d
+│   │                   │   ├── wsecnhba.d
+│   │                   │   ├── wzjcygca.d
+│   │                   │   ├── xrleucaa.d
+│   │                   │   ├── xvcecwba.d
+│   │                   │   ├── yanuvdga.d
+│   │                   │   ├── yqzjxwea.d
+│   │                   │   ├── zfxhcxea.d
+│   │                   │   ├── zhdfaaaa.d
+│   │                   │   ├── zklpluaa.d
+│   │                   │   ├── zsojxuea.d
+│   │                   │   └── zwwzwvaa.d
+│   │                   ├── tiihbdea.d
+│   │                   ├── totdqpda.d
+│   │                   ├── ubdwauga.d
+│   │                   ├── uhojdwba.d
+│   │                   ├── uikawbda.d
+│   │                   ├── uqfkpqea.d
+│   │                   ├── uryscuba.d
+│   │                   ├── vazwmtaa.d
+│   │                   ├── vdmitdba.d
+│   │                   ├── venlmxaa.d
+│   │                   ├── vhywnzda.d
+│   │                   ├── wpwskyca.d
+│   │                   ├── wsecnhba.d
+│   │                   ├── wzjcygca.d
+│   │                   ├── xrleucaa.d
+│   │                   ├── xvcecwba.d
+│   │                   ├── yanuvdga.d
+│   │                   ├── yqzjxwea.d
+│   │                   ├── zfxhcxea.d
+│   │                   ├── zhdfaaaa.d
+│   │                   ├── zklpluaa.d
+│   │                   ├── zsojxuea.d
+│   │                   └── zwwzwvaa.d
+│   ├── feedback_voice
+│   │   ├── 10.0V.wav
+│   │   ├── 10.5V.wav
+│   │   ├── 11V.wav
+│   │   ├── 12V.wav
+│   │   ├── awake.wav
+│   │   ├── back.wav
+│   │   ├── blue.wav
+│   │   ├── close_fail.wav
+│   │   ├── close_success.wav
+│   │   ├── come.wav
+│   │   ├── crawl_succeeded.wav
+│   │   ├── cuboid.wav
+│   │   ├── cylinder.wav
+│   │   ├── drift.wav
+│   │   ├── english
+│   │   │   ├── 10.0V.wav
+│   │   │   ├── 10.5V.wav
+│   │   │   ├── 11V.wav
+│   │   │   ├── 12V.wav
+│   │   │   ├── awake.wav
+│   │   │   ├── back.wav
+│   │   │   ├── blue.wav
+│   │   │   ├── close_fail.wav
+│   │   │   ├── close_success.wav
+│   │   │   ├── come.wav
+│   │   │   ├── crwal_successed.wav
+│   │   │   ├── cuboid.wav
+│   │   │   ├── cylinder.wav
+│   │   │   ├── drift.wav
+│   │   │   ├── fail.wav
+│   │   │   ├── find_target.wav
+│   │   │   ├── finish_mapping.wav
+│   │   │   ├── food_waste.wav
+│   │   │   ├── go_a.wav
+│   │   │   ├── go_b.wav
+│   │   │   ├── go_c.wav
+│   │   │   ├── go_origin.wav
+│   │   │   ├── go.wav
+│   │   │   ├── green.wav
+│   │   │   ├── hazardous_waste.wav
+│   │   │   ├── mission_completed.wav
+│   │   │   ├── open_fail.wav
+│   │   │   ├── open_success.wav
+│   │   │   ├── perform_tasks.wav
+│   │   │   ├── reach_destination.wav
+│   │   │   ├── recyclable_waste.wav
+│   │   │   ├── red.wav
+│   │   │   ├── residual_waste.wav
+│   │   │   ├── running.wav
+│   │   │   ├── sphere.wav
+│   │   │   ├── start_mapping.wav
+│   │   │   ├── start_navigating.wav
+│   │   │   ├── start_track_blue.wav
+│   │   │   ├── stop_fail.wav
+│   │   │   ├── stop_track.wav
+│   │   │   ├── stop.wav
+│   │   │   ├── track_fail.wav
+│   │   │   ├── turn_left.wav
+│   │   │   ├── turn_right.wav
+│   │   │   └── warnning.wav
+│   │   ├── fail.wav
+│   │   ├── find_target.wav
+│   │   ├── finish_mapping.wav
+│   │   ├── food_waste.wav
+│   │   ├── go_a.wav
+│   │   ├── go_b.wav
+│   │   ├── go_c.wav
+│   │   ├── go_origin.wav
+│   │   ├── go.wav
+│   │   ├── green.wav
+│   │   ├── hazardous_waste.wav
+│   │   ├── mission_completed.wav
+│   │   ├── ok.wav
+│   │   ├── open_fail.wav
+│   │   ├── open_success.wav
+│   │   ├── perform_tasks.wav
+│   │   ├── reach_destination.wav
+│   │   ├── recyclable_waste.wav
+│   │   ├── red.wav
+│   │   ├── residual_waste.wav
+│   │   ├── running.wav
+│   │   ├── sleep.wav
+│   │   ├── sphere.wav
+│   │   ├── start_mapping.wav
+│   │   ├── start_navigating.wav
+│   │   ├── start_track_blue.wav
+│   │   ├── start_track_green.wav
+│   │   ├── start_track_red.wav
+│   │   ├── stop_fail.wav
+│   │   ├── stop_track.wav
+│   │   ├── stop.wav
+│   │   ├── track_fail.wav
+│   │   ├── turn_left.wav
+│   │   ├── turn_right.wav
+│   │   ├── unknow.wav
+│   │   └── warnning.wav
+│   ├── include
+│   │   ├── asr_offline_record_sample.h
+│   │   ├── formats.h
+│   │   ├── linuxrec.h
+│   │   ├── msp_cmn.h
+│   │   ├── msp_errors.h
+│   │   ├── msp_types.h
+│   │   ├── play_path.h
+│   │   ├── qise.h
+│   │   ├── qisr.h
+│   │   ├── qtts.h
+│   │   ├── queue_internal.h
+│   │   ├── queue_simple.h
+│   │   ├── record_param.h
+│   │   ├── speech_recognizer.h
+│   │   ├── user_interface.h
+│   │   └── voice_control.h
+│   ├── launch
+│   │   ├── mic_init.launch.py
+│   │   ├── msc
+│   │   │   └── 14568787b9f27199e9ec950aa0af565e
+│   │   │       ├── cfg.ldata
+│   │   │       └── kaitalk.dat
+│   │   ├── __pycache__
+│   │   │   └── mic_init.launch.cpython-310.pyc
+│   │   ├── startup_test.launch.py
+│   │   ├── voice_control_arm.launch.py
+│   │   ├── voice_control_color_detect.launch.py
+│   │   ├── voice_control_color_sorting.launch.py
+│   │   ├── voice_control_color_track.launch.py
+│   │   ├── voice_control_garbage_classification.launch.py
+│   │   ├── voice_control_move.launch.py
+│   │   ├── voice_control_navigation.launch.py
+│   │   └── voice_control_navigation_transport.launch.py
+│   ├── lib
+│   │   ├── arm64
+│   │   │   ├── libmsc.so
+│   │   │   └── liboffline_record_lib.so
+│   │   └── x64
+│   │       ├── libaiui.so
+│   │       ├── libmsc.so
+│   │       └── liboffline_record_lib.so
+│   ├── package.xml
+│   ├── scripts
+│   │   ├── asr_node.py
+│   │   ├── awake_node.py
+│   │   ├── msc
+│   │   │   └── 14568787b9f27199e9ec950aa0af565e
+│   │   │       └── cfg.ldata
+│   │   ├── voice_control_arm.py
+│   │   ├── voice_control_color_detect.py
+│   │   ├── voice_control_color_sorting.py
+│   │   ├── voice_control_color_track.py
+│   │   ├── voice_control_garbage_classification.py
+│   │   ├── voice_control_move.py
+│   │   ├── voice_control_navigation.py
+│   │   ├── voice_control_navigation_transport.py
+│   │   └── wonder_echo_pro_node.py
+│   ├── src
+│   │   └── voice_control.cpp
+│   ├── tmp
+│   │   ├── all.pcm
+│   │   ├── config.txt
+│   │   ├── in.pcm
+│   │   └── system.tar
+│   ├── xf_mic_asr_offline
+│   │   ├── __init__.py
+│   │   └── voice_play.py
+│   └── xf_mic.rules
+├── xf_mic_asr_offline_msgs
+│   ├── CMakeLists.txt
+│   ├── package.xml
+│   └── srv
+│       ├── GetOfflineResult.srv
+│       └── SetString.srv
+└── yolo_detect
+    ├── camera_test.sh
+    ├── CMakeLists.txt
+    ├── config
+    │   └── camera_config.yaml
+    ├── launch
+    │   └── yolo.launch.py
+    ├── models
+    │   ├── best.pt
+    │   ├── best.pt.zip
+    │   └── test_model.py
+    ├── package.xml
+    ├── resource
+    │   └── yolo_detect
+    ├── setup.py
+    ├── tree_ros2_ws_weed_4.txt
+    └── yolo_detect
+        ├── __init__.py
+        ├── __pycache__
+        │   ├── __init__.cpython-310.pyc
+        │   └── yolo_node.cpython-310.pyc
+        ├── yolo_node_debug.py
+        └── yolo_node.py
+
+212 directories, 972 files

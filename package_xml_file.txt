@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>yolo_detect</name>
+  <version>1.0.0</version>
+  <description>YOLOv8-based weed detection system for JetRover agricultural robotics platform</description>
+  
+  <!-- Maintainer contact information -->
+  <maintainer email="your-email@example.com">Your Name</maintainer>
+  
+  <!-- License information -->
+  <license>Apache-2.0</license>
+  
+  <!-- Package website and repository -->
+  <url type="website">https://github.com/your-username/jetrover-weed-detection</url>
+  <url type="repository">https://github.com/your-username/jetrover-weed-detection.git</url>
+  <url type="bugtracker">https://github.com/your-username/jetrover-weed-detection/issues</url>
+  
+  <!-- Package authors -->
+  <author email="your-email@example.com">Your Name</author>
+  
+  <!-- Package keywords for indexing -->
+  <group_depend>agriculture</group_depend>
+  <group_depend>computer_vision</group_depend>
+  <group_depend>robotics</group_depend>
+  <group_depend>machine_learning</group_depend>
+  
+  <!-- Build dependencies -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_cmake_python</buildtool_depend>
+  
+  <!-- Runtime dependencies -->
+  <depend>rclpy</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>cv_bridge</depend>
+  <depend>peripherals</depend>
+  
+  <!-- Test dependencies -->
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+  
+  <!-- Export information -->
+  <export>
+    <build_type>ament_python</build_type>
+    
+    <!-- Package tags for categorization -->
+    <rosdistro_index>
+      <tags>
+        <tag>smart-agriculture</tag>
+        <tag>computer-vision</tag>
+        <tag>yolov8n</tag>
+        <tag>weed-detection</tag>
+        <tag>jetrover</tag>
+        <tag>autonomous-systems</tag>
+      </tags>
+    </rosdistro_index>
+  </export>
+</package>

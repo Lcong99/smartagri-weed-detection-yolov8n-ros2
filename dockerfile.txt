@@ -1,0 +1,113 @@
+# Multi-stage Dockerfile for JetRover Weed Detection System
+# Supports both x86_64 and ARM64 architectures
+
+ARG ROS_DISTRO=humble
+ARG UBUNTU_VERSION=22.04
+
+# Base stage with ROS2 and system dependencies
+FROM ros:${ROS_DISTRO}-ros-base-ubuntu${UBUNTU_VERSION} as base
+
+# Set environment variables
+ENV DEBIAN_FRONTEND=noninteractive
+ENV ROS_DISTRO=${ROS_DISTRO}
+ENV PYTHONUNBUFFERED=1
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    python3-pip \
+    python3-opencv \
+    python3-dev \
+    build-essential \
+    git \
+    wget \
+    curl \
+    v4l-utils \
+    udev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install ROS2 dependencies
+RUN apt-get update && apt-get install -y \
+    ros-${ROS_DISTRO}-cv-bridge \
+    ros-${ROS_DISTRO}-sensor-msgs \
+    ros-${ROS_DISTRO}-std-msgs \
+    ros-${ROS_DISTRO}-geometry-msgs \
+    ros-${ROS_DISTRO}-image-transport \
+    ros-${ROS_DISTRO}-usb-cam \
+    && rm -rf /var/lib/apt/lists/*
+
+# Development stage with additional tools
+FROM base as development
+
+RUN apt-get update && apt-get install -y \
+    vim \
+    tmux \
+    htop \
+    tree \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python development dependencies
+COPY requirements-dev.txt /tmp/
+RUN pip install --no-cache-dir -r /tmp/requirements-dev.txt
+
+RUN echo "alias ll='ls -la'" >> /root/.bashrc
+RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> /root/.bashrc
+
+# Production stage
+FROM base as production
+
+# Create workspace directory
+WORKDIR /ros2_ws
+
+# Copy requirements and install Python dependencies
+COPY requirements.txt /tmp/
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
+
+# Copy source code
+COPY . /ros2_ws/src/AI_weed_detection_ros2_ws/
+
+# Build the ROS2 package
+RUN /bin/bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && \
+    colcon build --packages-select AI_weed_detection_ros2_ws --symlink-install"
+
+# Setup environment
+RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> /root/.bashrc
+RUN echo "source /ros2_ws/install/setup.bash" >> /root/.bashrc
+
+# Create directories for outputs
+RUN mkdir -p /root/weed_detections
+
+# Set permissions for script
+RUN chmod +x /ros2_ws/src/AI_weed_detection_ros2_ws/weed_detector.sh
+
+# Jetson-specific stage for NVIDIA GPU support
+FROM production as jetson
+
+# Install NVIDIA runtime dependencies (these would be available on Jetson)
+# Note: Actual CUDA installation happens through JetPack on real Jetson devices
+ENV NVIDIA_VISIBLE_DEVICES=all
+ENV NVIDIA_DRIVER_CAPABILITIES=compute,utility
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=${CUDA_HOME}/bin:${PATH}
+ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
+
+# Install PyTorch with CUDA support for Jetson
+RUN pip install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cu118
+
+# Default to production stage
+FROM production as final
+
+# Expose any ports if needed for monitoring/debugging
+EXPOSE 8080
+
+# Set the default command
+CMD ["/bin/bash", "-c", "source /opt/ros/${ROS_DISTRO}/setup.bash && source /ros2_ws/install/setup.bash && /ros2_ws/src/AI_weed_detection_ros2_ws/weed_detector.sh"]
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD /bin/bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && ros2 node list | grep -q weed || exit 1"
+
+# Labels for metadata
+LABEL maintainer="Lin Cong <llincong.jp@gmail.com>"
+LABEL version="1.0.0"
+LABEL description="Smart Agriculture Weed Detection System with YOLOv8n and ROS2"
+LABEL org.opencontainers.image.source="https://github.com/Lcong99/smartagri-weed-detection-yolov8n-ros2"

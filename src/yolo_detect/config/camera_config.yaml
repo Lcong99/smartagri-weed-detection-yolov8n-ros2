@@ -1,0 +1,18 @@
+# Camera configuration for weed detection
+usb_cam:
+  ros__parameters:
+    video_device: "/dev/video0"
+    framerate: 30.0
+    io_method: "mmap"
+    pixel_format: "yuyv"
+    image_width: 640
+    image_height: 480
+    camera_name: "weed_detection_camera"
+    brightness: 128
+    contrast: 128
+    saturation: 128
+    sharpness: 128
+    gain: 0
+    white_balance: 4000
+    exposure: 100
+    frame_id: "camera_link"
