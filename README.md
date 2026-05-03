@@ -35,14 +35,9 @@ This project addresses these constraints by combining:
 ## 🎥 Demo
 
 
+https://github.com/user-attachments/assets/66446c6e-16b6-4a4b-9fba-b35be7b9eaea
 
-
-https://github.com/user-attachments/assets/15d40c90-13cf-4f43-a7d4-8857fe5b2c6f
-
-
-
-https://github.com/user-attachments/assets/ccbddd9e-cb4e-412e-b3cd-59d6ddfc817d
-
+https://github.com/user-attachments/assets/e7de20ba-d96a-41b4-8182-a8dd31e86234
 
 
 ---
