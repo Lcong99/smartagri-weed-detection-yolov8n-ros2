@@ -34,12 +34,16 @@ This project addresses these constraints by combining:
 
 ## 🎥 Demo
 
-> Add a short GIF or video here showing detection results in real-time.
 
-```
-Example:
-Camera → Detection → Annotated Output
-```
+
+
+https://github.com/user-attachments/assets/15d40c90-13cf-4f43-a7d4-8857fe5b2c6f
+
+
+
+https://github.com/user-attachments/assets/ccbddd9e-cb4e-412e-b3cd-59d6ddfc817d
+
+
 
 ---
 
