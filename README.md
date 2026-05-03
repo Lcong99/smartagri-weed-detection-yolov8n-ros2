@@ -1,22 +1,47 @@
+# 🌱 Smart Agriculture Weed Detection (YOLOv8 + ROS2)
 
-# smartagri-weed-detection-yolov8n-ros2
-AI ROS2 weed detection with YOLOv8-nano on JetRover
-=======
-# Smart Agriculture Weed Detection System 
+An end-to-end **edge AI perception pipeline** for real-time weed detection, built using YOLOv8n and ROS2 on the JetRover platform.
 
-An intelligent agricultural robotics solution for autonomous weed detection using YOLOv8n on the JetRover platform with ROS2 Humble.
+This project demonstrates how deep learning models can be integrated into a robotics system for precision agriculture, enabling automated weed identification in real-world environments on resource-constrained devices.
 
-![Smart Agriculture](https://img.shields.io/badge/Smart-Agriculture-green) ![ROS2](https://img.shields.io/badge/ROS2-Humble-blue) ![Python](https://img.shields.io/badge/Python-3.10-brightgreen) ![YOLOv8](https://img.shields.io/badge/YOLOv8n-Ultralytics-orange) ![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey)
+---
 
-## Features
+##  Key Highlights
 
-- **Real-time Weed Detection**: YOLOv8n-powered computer vision for accurate weed identification
-- **Multiple Camera Support**: Compatible with USB cameras and depth cameras (Dabai DCW)
-- **ROS2 Integration**: Full ROS2 Humble ecosystem integration with topic publishing
-- **GPU Acceleration**: CUDA support for high-performance inference
-- **Data Logging**: Automatic saving of detection results with timestamps and metadata
-- **Interactive Testing**: Comprehensive testing suite with automated camera detection
-- **Visualization**: Real-time annotated video streams with detection statistics
+* Real-time weed detection using **YOLOv8n (lightweight, edge-optimized)**
+* Full **ROS2-based perception pipeline** (camera → inference → publishing)
+* Designed for **embedded deployment** (Jetson Nano / Orin)
+* Modular and extensible architecture for robotics integration
+* Built-in **data logging, debugging, and visualization tools**
+
+---
+
+## Problem Motivation
+
+Weed detection in agricultural environments is non-trivial due to:
+
+* **Green-on-green problem** (weeds vs crops visually similar)
+* Variable lighting and outdoor conditions
+* Need for **real-time inference on low-power hardware**
+
+This project addresses these constraints by combining:
+
+* Efficient object detection (YOLOv8n)
+* Robotics middleware (ROS2)
+* Edge deployment considerations (Jetson platform)
+
+---
+
+## 🎥 Demo
+
+> Add a short GIF or video here showing detection results in real-time.
+
+```
+Example:
+Camera → Detection → Annotated Output
+```
+
+---
 
 ## System Architecture
 
@@ -30,113 +55,106 @@ An intelligent agricultural robotics solution for autonomous weed detection usin
                        ┌──────────────────┐
                        │  ROS2 Publishers │
                        │ - Bounding Boxes │
-                       │ - Visualizations │
+                       │ - Visualization  │
                        │ - JSON Data      │
                        └──────────────────┘
 ```
 
-## Prerequisites
+### Pipeline Explanation
 
-### Hardware Requirements
+1. Camera node publishes image stream
+2. YOLO detection node performs real-time inference
+3. Results are published as:
 
-- **JetRover Robot**: Mecanum/Tank/Ackermann chassis with ROS2 support
-- **Camera**: USB camera or Dabai DCW depth camera
-- **Compute**: NVIDIA Jetson (Nano/Orin) or Raspberry Pi 5
-- **Storage**: Minimum 8GB free space for model and logs
+   * bounding boxes
+   * annotated image stream
+   * structured JSON metadata
+4. Data logger stores outputs for offline analysis
 
-### Software Requirements
+This modular design enables seamless integration with downstream robotics tasks such as navigation or precision spraying.
 
-- **OS**: Ubuntu 22.04 (for Jetson) or Debian 12 (for Raspberry Pi)
-- **ROS2**: Humble Hawksbill
-- **Python**: 3.10+
-- **CUDA**: 11.4+ (optional, for GPU acceleration)
+---
+
+## My Contribution
+
+* Designed and implemented the full ROS2-based perception pipeline
+* Integrated YOLOv8 inference into a real-time robotics workflow
+* Built modular nodes for camera input, detection, and publishing
+* Implemented structured logging (image + JSON outputs)
+* Developed testing and debugging utilities for system validation
+* Optimized system for edge deployment on Jetson hardware
+
+---
+
+## Tech Stack
+
+* **Framework**: ROS2 (Humble)
+* **Model**: YOLOv8n (Ultralytics)
+* **Language**: Python 3.10
+* **Hardware**: NVIDIA Jetson (Nano / Orin), JetRover platform
+* **Libraries**: OpenCV, PyTorch
+
+---
 
 ## Installation
 
-### 1. Clone the Repository
+### 1. Clone Repository
 
 ```bash
 cd ~/ros2_ws/src
-git clone https://github.com/Lcong99/smartagri-weed-detection-yolov8n-ros2.git AI_weed_detection_ros2_ws
+git clone https://github.com/Lcong99/smartagri-weed-detection-yolov8n-ros2.git
 cd ~/ros2_ws
 ```
 
 ### 2. Install Dependencies
 
 ```bash
-# Install Python packages
 pip install ultralytics opencv-python torch torchvision
 
-# Install ROS2 dependencies
-sudo apt install ros-humble-cv-bridge ros-humble-sensor-msgs
+sudo apt update
+sudo apt install -y \
+  ros-humble-cv-bridge \
+  ros-humble-sensor-msgs
 ```
 
-### 3. Build the Package
+### 3. Build ROS2 Package
 
 ```bash
-cd ~/ros2_ws
 colcon build --packages-select yolo_detect
 source install/setup.bash
 ```
 
-### 4. Download Pre-trained Model
+### 4. Add Model
 
 ```bash
-# Place your trained weed detection model in the models directory
-cp your_weed_model.pt ~/ros2_ws/src/AI_weed_detection_ros2_ws/src/yolo_detect/models/best.pt
+mkdir -p src/yolo_detect/models
 
-# Or download a test model
-wget https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8n.pt -O ~/ros2_ws/src/AI_weed_detection_ros2_ws/src/yolo_detect/models/yolov8n.pt
+# Place trained model
+cp best.pt src/yolo_detect/models/best.pt
+
+# OR download base model
+wget https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8n.pt \
+  -O src/yolo_detect/models/yolov8n.pt
 ```
 
-### 2. Install Dependencies
+---
 
-```bash
-# Install Python packages
-pip install ultralytics opencv-python torch torchvision
-
-# Install ROS2 dependencies
-sudo apt install ros-humble-cv-bridge ros-humble-sensor-msgs
-```
-
-### 3. Build the Package
-
-```bash
-cd ~/ros2_ws
-colcon build --packages-select AI_weed_detection_ros2_ws
-source install/setup.bash
-```
-
-### 4. Download Pre-trained Model
-
-```bash
-# Place your trained weed detection model in the models directory
-cp your_weed_model.pt ~/ros2_ws/src/AI_weed_detection_ros2_ws/models/best.pt
-```
-
-## Usage
+##  Usage
 
 ### Quick Start
 
 ```bash
-# Make the script executable
-chmod +x ~/ros2_ws/src/AI_weed_detection_ros2_ws/weed_detector.sh
-
-# Run the interactive testing and launch script
-cd ~/ros2_ws/src/AI_weed_detection_ros2_ws
+chmod +x weed_detector.sh
 ./weed_detector.sh
 ```
 
 ### Manual Launch
 
 ```bash
-# Launch with USB camera
 ros2 launch yolo_detect yolo.launch.py camera_type:=usb
 
-# Launch with depth camera
 ros2 launch yolo_detect yolo.launch.py camera_type:=depth
 
-# Launch with custom parameters
 ros2 launch yolo_detect yolo.launch.py \
     camera_type:=depth \
     confidence_threshold:=0.3 \
@@ -144,186 +162,161 @@ ros2 launch yolo_detect yolo.launch.py \
     debug_mode:=true
 ```
 
-### Parameters
+---
 
-| Parameter                | Type   | Default                                  | Description                          |
-| ------------------------ | ------ | ---------------------------------------- | ------------------------------------ |
-| `camera_type`          | string | `depth`                                | Camera type:`usb` or `depth`     |
-| `camera_topic`         | string | `/depth_cam/depth_cam/color/image_raw` | ROS2 camera topic                    |
-| `model_path`           | string | `models/best.pt`                       | Path to YOLO model                   |
-| `confidence_threshold` | float  | `0.5`                                  | Detection confidence threshold       |
-| `device`               | string | `cuda`                                 | Inference device:`cuda` or `cpu` |
-| `save_detections`      | bool   | `true`                                 | Save detection images and data       |
-| `output_dir`           | string | `/home/ubuntu/weed_detections`         | Output directory                     |
-| `debug_mode`           | bool   | `true`                                 | Enable debug logging                 |
+##  Parameters
 
-## ROS2 Topics
+| Parameter            | Type   | Default                  | Description          |
+| -------------------- | ------ | ------------------------ | -------------------- |
+| camera_type          | string | depth                    | usb / depth          |
+| camera_topic         | string | /depth_cam/.../image_raw | Input image topic    |
+| model_path           | string | models/best.pt           | YOLO model path      |
+| confidence_threshold | float  | 0.5                      | Detection threshold  |
+| device               | string | cuda                     | cuda / cpu           |
+| save_detections      | bool   | true                     | Save output data     |
+| output_dir           | string | ~/weed_detections        | Output directory     |
+| debug_mode           | bool   | true                     | Enable debug logging |
+
+---
+
+## 📡 ROS2 Interfaces
 
 ### Published Topics
 
-| Topic                          | Type                  | Description                     |
-| ------------------------------ | --------------------- | ------------------------------- |
-| `/weed_detect/boxes`         | `Float32MultiArray` | Bounding box coordinates        |
-| `/weed_detect/visualization` | `Image`             | Annotated image with detections |
-| `/weed_detect/json_data`     | `String`            | JSON detection metadata         |
+| Topic                      | Type              | Description              |
+| -------------------------- | ----------------- | ------------------------ |
+| /weed_detect/boxes         | Float32MultiArray | Bounding box coordinates |
+| /weed_detect/visualization | Image             | Annotated output stream  |
+| /weed_detect/json_data     | String            | Detection metadata       |
 
 ### Subscribed Topics
 
-| Topic                                    | Type      | Description           |
-| ---------------------------------------- | --------- | --------------------- |
-| `/usb_cam/image_raw`                   | `Image` | USB camera feed       |
-| `/depth_cam/depth_cam/color/image_raw` | `Image` | Depth camera RGB feed |
+| Topic                    | Type  | Description           |
+| ------------------------ | ----- | --------------------- |
+| /usb_cam/image_raw       | Image | USB camera feed       |
+| /depth_cam/.../image_raw | Image | Depth camera RGB feed |
 
-## Testing
+---
 
-The `weed_detector.sh` script provides comprehensive testing:
+##  Testing
+
+Run full system validation:
 
 ```bash
 ./weed_detector.sh
 ```
 
-**Available Tests:**
+Includes:
 
-1. **USB Camera Test** - Verify USB camera connectivity and formats
-2. **Depth Camera Test** - Test depth camera functionality
-3. **ROS2 Topics** - List available camera topics
-4. **YOLO Model** - Validate model loading
-5. **GPU Support** - Check CUDA availability
-6. **Complete Test Suite** - Run all tests automatically
-7. **Launch Detection** - Start weed detection system
+* Camera detection test
+* ROS2 topic validation
+* Model loading check
+* GPU (CUDA) availability
+* End-to-end pipeline test
 
-## Project Structure
+---
+
+##  Performance
+
+* ~15 FPS on Jetson Orin (GPU)
+* ~5–8 FPS on CPU-only systems
+* Model: YOLOv8n (low-latency optimized)
+
+Performance depends on:
+
+* input resolution
+* hardware configuration
+* model size
+
+---
+
+## 📁 Project Structure
 
 ```
-AI_weed_detection_ros2_ws/
-├── 📁 src/
-│   └── 📁 yolo_detect/                # ROS2 package
-│       ├── 📁 config/
-│       │   └── camera_config.yaml    # Camera configuration
-│       ├── 📁 launch/
-│       │   └── yolo.launch.py       # ROS2 launch file
-│       ├── 📁 models/
-│       │   ├── best.pt             # YOLO weed detection model
-│       │   ├── yolov8n.pt          # Downloaded test model
-│       │   └── test_model.py       # Model validation script
-│       ├── 📁 yolo_detect/
-│       │   ├── __init__.py
-│       │   ├── yolo_node.py        # Main detection node
-│       │   └── yolo_node_debug.py  # Debug version
-│       ├── package.xml            # ROS2 package definition
-│       ├── setup.py              # Python package setup
-│       └── CMakeLists.txt        # Build configuration
-├── weed_detector.sh              # Interactive testing script
-├── README.md                    # This file
-├── LICENSE                     # Apache 2.0 license
-└── .gitignore                 # Git ignore file
+.
+├── src/
+│   └── yolo_detect/
+│       ├── config/
+│       ├── launch/
+│       ├── models/
+│       ├── yolo_detect/
+│       ├── package.xml
+│       ├── setup.py
+│       └── CMakeLists.txt
+├── weed_detector.sh
+├── README.md
+├── LICENSE
+└── .gitignore
 ```
 
-## Configuration
+---
 
-### Camera Configuration
+## 📤 Output Format
 
-Edit `config/camera_config.yaml` to adjust camera settings:
+Each detection produces:
 
-```yaml
-usb_cam:
-  ros__parameters:
-    video_device: "/dev/video0"
-    framerate: 30.0
-    image_width: 640
-    image_height: 480
-    # ... additional parameters
-```
+* Image: `weed_<timestamp>.jpg`
+* Metadata: `weed_<timestamp>.json`
 
-### Model Training
-
-To train your own weed detection model:
-
-1. Prepare your dataset with weed annotations
-2. Use YOLOv8 training pipeline:
-
-```python
-from ultralytics import YOLO
-
-# Load a model
-model = YOLO('yolov8n.pt')  # load a pretrained model
-
-# Train the model
-results = model.train(data='weed_dataset.yaml', epochs=100, imgsz=640)
-```
-
-## Performance Metrics
-
-- **Inference Speed**: ~15 FPS on Jetson Orin
-- **Detection Accuracy**: Depends on trained model quality
-- **Memory Usage**: ~2GB GPU memory (CUDA), ~1GB RAM (CPU)
-- **Power Consumption**: ~10W additional load during inference
-
-## Output Data
-
-### Detection Files
-
-Each detection saves:
-
-- **Image**: `weed_YYYYMMDD_HHMMSS_mmm.jpg`
-- **Metadata**: `weed_YYYYMMDD_HHMMSS_mmm.json`
-
-### JSON Format
+### JSON Schema
 
 ```json
 {
-  "timestamp": 1234567890.123,
-  "frame_id": "camera_link",
-  "frame_count": 42,
+  "timestamp": 0.0,
   "detections": [
     {
-      "id": 0,
       "class": 0,
       "confidence": 0.85,
-      "bbox": [100, 150, 200, 250],
-      "center": [150, 200],
-      "size": [100, 100],
-      "area": 10000
+      "bbox": [x1, y1, x2, y2]
     }
   ]
 }
 ```
 
-## Troubleshooting
+---
 
-### Common Issues
+##  Model Training (Optional)
 
-**Camera Not Detected**
+```python
+from ultralytics import YOLO
 
-```bash
-# Check camera devices
-ls /dev/video*
-v4l2-ctl --list-devices
-
-# Test camera manually
-ros2 topic list | grep cam
+model = YOLO('yolov8n.pt')
+model.train(data='weed_dataset.yaml', epochs=100, imgsz=640)
 ```
 
-**Model Loading Error**
+---
 
-- Verify model file exists and has correct permissions
-- Check model compatibility with ultralytics version
-- Test model loading manually
+## ⚠️ Troubleshooting
 
-**Low FPS Performance**
+**Camera not detected**
 
-- Enable GPU acceleration
-- Reduce confidence threshold
-- Optimize camera resolution
+```bash
+ls /dev/video*
+ros2 topic list
+```
+
+**Low FPS**
+
+* Enable CUDA
+* Reduce resolution
+* Use smaller model
+
+**Model load issues**
+
+* Verify file path
+* Check compatibility with ultralytics version
+
+---
 
 ## License
 
-This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+Apache License 2.0
+
+---
 
 ## Acknowledgments
 
-- **Hiwonder** for the JetRover platform and documentation
-- **Ultralytics** for the YOLOv8 framework
-- **ROS2 Community** for the robotics middleware
-- **Open Source Computer Vision** community
-
+* Ultralytics (YOLOv8)
+* ROS2 community
+* Jetson platform ecosystem
+* Open-source computer vision community
